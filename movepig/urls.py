@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from posts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('posts/', views.index),
+    # views 모듈 안에 있는 index라는 것을 사용하겠다!
 ]
