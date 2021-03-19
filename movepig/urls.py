@@ -20,6 +20,10 @@ from posts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('theme.urls')),
-    # path('posts/', views.index),
+    path('posts/', views.posts, name='posts'),
+    path('create/', views.create, name='create'),
+    path('signin/', views.signin, name='signin'),
+    path('signup/', views.signup, name='signup'),
+    path('mypage/', views.mypage, name='mypage'),
     # views 모듈 안에 있는 index라는 것을 사용하겠다!
 ]
