@@ -70,16 +70,16 @@ section {
 }
 
 /*--------------------------------------------------------------
-# maps
+# 전체 body
 --------------------------------------------------------------*/
-.maps {
+.main-box {
   padding: 15px 0;
   min-height: 40px;
   margin-top:  120px;
 }
 
 @media (max-width: 992px) {
-  .maps {
+  .main-box {
     margin-top: 100px;
   }
 }
