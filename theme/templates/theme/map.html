@@ -1,5 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-map!!
+
+<main id="main">
+    <section class="maps">
+        
+        <div class="container">
+            <img class="map-banner" src="{% static 'assets/img/map-banner.png' %}" class="img-fluid" alt="">
+            <div class="option">
+                <div>
+
+
+
+                    
+                    <form onsubmit="searchPlaces(); return false;">
+                        키워드 : <input type="text" value="서울대입구 헬스장" id="keyword" size="15">
+                        <button type="submit">검색하기</button>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="map_wrap">
+                <div id="map" style="width:80%;height:100%;position:relative;overflow:hidden;z-index:0;"></div>
+                <div id="menu_wrap" class="bg_white">
+                    <ul id="placesList"></ul>
+                    <div id="pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock %}
