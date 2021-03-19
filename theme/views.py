@@ -9,3 +9,6 @@ class Map(TemplateView):
 
 class Video(TemplateView):
     template_name = 'theme/video.html'
+
+class VideoDetail(TemplateView):
+    template_name = 'theme/video_detail.html'

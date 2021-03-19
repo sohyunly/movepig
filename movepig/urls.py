@@ -22,8 +22,9 @@ urlpatterns = [
     path('', include('theme.urls')),
     path('posts/', views.posts, name='posts'),
     path('create/', views.create, name='create'),
+    path('detail/', views.detail, name='detail'),
     path('signin/', views.signin, name='signin'),
     path('signup/', views.signup, name='signup'),
-    path('mypage/', views.mypage, name='mypage'),
+    path('mypage/', views.mypage, name='signup'),
     # views 모듈 안에 있는 index라는 것을 사용하겠다!
 ]

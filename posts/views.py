@@ -8,6 +8,9 @@ def posts(request):
 def create(request):
     return render(request, 'posts/create.html')
 
+def detail(request):
+    return render(request, 'posts/detail.html')
+
 def signin(request):
     return render(request, 'posts/signin.html')
 
