@@ -7,8 +7,11 @@ class MainpageView(TemplateView):
 class Map(TemplateView):
     template_name = 'theme/map.html'
 
-class Video(TemplateView):
-    template_name = 'theme/video.html'
+# class Video(TemplateView):
+#     template_name = 'theme/video.html'
 
-class VideoDetail(TemplateView):
-    template_name = 'theme/video_detail.html'
+# class VideoDetail(TemplateView):
+#     template_name = 'theme/video_detail.html'
+
+
+

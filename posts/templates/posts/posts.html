@@ -7,9 +7,16 @@
         
         <div class="container">
             <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
-         
-        
- 
+            으으
+            {% if posts %}
+                <ul>
+                    {% for post in posts %}
+                        <li>Author: {{ post.author }} | Body: {{ post.body }} | Created_at: {{ post.created_at }} </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+            <p>NO POST</p>
+            {% endif %}
         </div>
     </section>
 </main>
