@@ -10,3 +10,12 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.author}: {self.body}'
+
+class Video(models.Model):
+
+    author = models.CharField(max_length=100)
+    body = models.TextField()
+    created_at = models.DateTimeField()
+
+    def __str__(self):
+        return f'{self.author}: {self.body}'

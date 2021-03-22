@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, Video
 
 
 def posts(request):
@@ -17,7 +17,11 @@ def detail(request):
     return render(request, 'posts/detail.html')
 
 def video(request):
-    return render(request, 'posts/video.html')
+    videos = Video.objects.all()
+    context = {
+        'videos' :  videos
+    }
+    return render(request, 'posts/video.html', context=context)
 
 def videodetail(request):
     return render(request, 'posts/video_detail.html')

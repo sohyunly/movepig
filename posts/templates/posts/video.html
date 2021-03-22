@@ -7,7 +7,16 @@
         
         <div class="container">
             <img class="video-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
-         
+            으으
+            {% if videos %}
+                <ul>
+                    {% for video in videos %}
+                        <li>Author: {{ video.author }} | Body: {{ video.body }} | Created_at: {{ video.created_at }} </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+            <p>NO POST</p>
+            {% endif %}
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                   <div class="thumbnail">
