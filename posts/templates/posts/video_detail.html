@@ -8,7 +8,22 @@
         <div class="container">
             <img class="posts-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
          
-        
+            <h1>Post Detail</h1>
+            {% if video %}
+            <h2>작성자</h2>
+            <p>{{ video.author }}</p>
+    
+            <h2>본문</h2>
+            <p>{{ video.body }}</p>
+    
+            <h2>게시일</h2>
+            <p>{{ video.created_at }}</p>
+    
+            {% else %}
+              <p>No Post</p>
+            {% endif %}
+    
+            <a href="{% url 'video' %}">목록</a>
  
         </div>
     </section>

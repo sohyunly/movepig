@@ -7,16 +7,33 @@
         
         <div class="container">
             <img class="video-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
-            으으
-            {% if videos %}
-                <ul>
+             {% if videos %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>작성자</th>
+                        <th>본문</th>
+                        <th>게시일</th>
+                        <th>상세</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {% for video in videos %}
-                        <li>Author: {{ video.author }} | Body: {{ video.body }} | Created_at: {{ video.created_at }} </li>
+                    <tr>
+                        <td>{{ video.id }}</td>
+                        <td>{{ video.author }}</td>
+                        <td>{{ video.body }}</td>
+                        <td>{{ video.created_at }}</td>
+                        <td><a href="{% url 'videodetail' video.id %}">보기</a></td>
+                    </tr>
                     {% endfor %}
-                </ul>
+                </tbody>
+            </table>
             {% else %}
             <p>NO POST</p>
             {% endif %}
+
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                   <div class="thumbnail">

@@ -4,19 +4,37 @@
 
 <main id="main">
     <section class="main-box">
-        
+
         <div class="container">
             <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
-            으으
             {% if posts %}
-                <ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>작성자</th>
+                        <th>본문</th>
+                        <th>게시일</th>
+                        <th>상세</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {% for post in posts %}
-                        <li>Author: {{ post.author }} | Body: {{ post.body }} | Created_at: {{ post.created_at }} </li>
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td>{{ post.author }}</td>
+                        <td>{{ post.body }}</td>
+                        <td>{{ post.created_at }}</td>
+                        <td><a href="{% url 'detail' post.id %}">보기</a></td>
+                    </tr>
                     {% endfor %}
-                </ul>
+                </tbody>
+            </table>
             {% else %}
             <p>NO POST</p>
             {% endif %}
+
+            <a href="{% url 'new' %}">글쓰기</a>
         </div>
     </section>
 </main>

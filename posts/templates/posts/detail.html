@@ -21,6 +21,23 @@
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
 
+        <h1>Post Detail</h1>
+        {% if post %}
+        <h2>작성자</h2>
+        <p>{{ post.author }}</p>
+
+        <h2>본문</h2>
+        <p>{{ post.body }}</p>
+
+        <h2>게시일</h2>
+        <p>{{ post.created_at }}</p>
+
+        {% else %}
+          <p>No Post</p>
+        {% endif %}
+
+        <a href="{% url 'posts' %}">목록</a>
+
         <div class="row gy-4">
 
           <div class="col-lg-8">
