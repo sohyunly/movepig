@@ -32,8 +32,8 @@ urlpatterns = [
     path('video/', views.video, name='video'),
     path('video/<int:video_id>/', views.videodetail, name='videodetail'),
     # path('videodetail/', views.videodetail, name='videodetail'),
-    path('signin/', views.signin, name='signin'),
-    path('signup/', views.signup, name='signup'),
+    path('accounts/', include('accounts.urls')),
+    # path('signin/', include('accounts.urls')),
     path('mypage/', views.mypage, name='mypage'),
     # views 모듈 안에 있는 index라는 것을 사용하겠다!
 ]
