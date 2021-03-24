@@ -8,6 +8,15 @@
         <div class="col-lg-6 d-flex flex-column justify-content-center">
           <h1 data-aos="fade-up">움직여 돼지야(Move Pig)</h1>
           <h2 data-aos="fade-up" data-aos-delay="400">움직여 돼지야는 365일 해야 하는 다이어트를 보다 건강하고 재미있게 할 수 있도록 도와주는 서비스입니다.</h2>
+          {% if user.is_authenticated %}
+         
+          {% csrf_token %}
+          <h2 data-aos="fade-up" data-aos-delay="400">{{ user.get_username }}님, 환영합니다!</h2>
+          
+          
+        {% else %}
+        
+        {% endif %}
           <h2 data-aos="fade-up" data-aos-delay="400">오늘 하루도 힘차게 움직여보세요!</h2>
         
           <div data-aos="fade-up" data-aos-delay="600">
