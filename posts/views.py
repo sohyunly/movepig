@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post, Video
+from django.utils import timezone
 
 
 def posts(request):
@@ -12,6 +13,15 @@ def posts(request):
 
 def new(request):
     return render(request, 'posts/new.html')
+
+def create(request):
+    author = request.POST.get('author')
+    body = request.POST.get('body')
+
+    post = Post(author=author, body=body, created_at=timezone.now())
+    post.save()
+
+    return redirect('detail', post_id=post.id)
 
 # def create(request):
 #     print(request.GET) # request.GET이 서버 로그로 출력됨
@@ -27,6 +37,25 @@ def detail(request, post_id):
         'post' :  post
     }
     return render(request, 'posts/detail.html', context)
+
+def edit(request, post_id):
+    post = Post.objects.get(id=post_id)
+    context = {'post': post}
+    return render(request, 'posts/edit.html', context)
+
+def update(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.author = request.POST.get('author')
+    post.body = request.POST.get('body')
+    post.save()
+    
+    return redirect('detail', post_id=post.id)
+
+def delete(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    
+    return redirect('posts')
 
 def video(request):
     videos = Video.objects.all()
