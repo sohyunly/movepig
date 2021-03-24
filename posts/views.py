@@ -13,13 +13,13 @@ def posts(request):
 def new(request):
     return render(request, 'posts/new.html')
 
-def create(request):
-    print(request.GET) # request.GET이 서버 로그로 출력됨
-    print(request.GET.get('author'))
-    print(request.GET.get('body'))
+# def create(request):
+#     print(request.GET) # request.GET이 서버 로그로 출력됨
+#     print(request.GET.get('author'))
+#     print(request.GET.get('body'))
 
-    context = {'author':request.GET.get('author'), 'body': request.GET.get('body')}
-    return render(request, 'posts/create.html', context)
+#     context = {'author':request.GET.get('author'), 'body': request.GET.get('body')}
+#     return render(request, 'posts/create.html', context)
 
 def detail(request, post_id):
     post = Post.objects.get(id=post_id)

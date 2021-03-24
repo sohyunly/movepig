@@ -23,7 +23,7 @@ urlpatterns = [
     path('posts/', views.posts, name='posts'),
     path('posts/<int:post_id>/', views.detail, name='detail'),
     # path('posts/<int:post_id>/comments', views.comments),
-    path('posts/create/', views.create, name='create'),
+    # path('posts/create/', views.create, name='create'),
     path('posts/new', views.new, name='new'),
     # path('detail/', views.detail, name='detail'),
     path('video/', views.video, name='video'),
