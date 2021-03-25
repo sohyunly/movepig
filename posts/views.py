@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post, Video
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 
 def posts(request):
@@ -11,17 +12,12 @@ def posts(request):
     }
     return render(request, 'posts/posts.html', context)
 
-def new(request):
-    if not request.user.is_authenticated:
-        return redirect('accounts:login')
-    
+@login_required
+def new(request):    
     return render(request, 'posts/new.html')
 
+@login_required
 def create(request):
-    if not request.user.is_authenticated:
-        return redirect('accounts/login')
-        
-
     user = request.user
     body = request.POST.get('body')
 
