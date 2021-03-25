@@ -33,7 +33,7 @@ def create(request):
 
 #     context = {'author':request.GET.get('author'), 'body': request.GET.get('body')}
 #     return render(request, 'posts/create.html', context)
-
+@login_required
 def detail(request, post_id):
     post = Post.objects.get(id=post_id)
     context = {
@@ -41,21 +41,34 @@ def detail(request, post_id):
     }
     return render(request, 'posts/detail.html', context)
 
+@login_required
 def edit(request, post_id):
-    post = Post.objects.get(id=post_id)
+    try:
+        post = Post.objects.get(id=post_id, user=request.user)
+    except Post.DoesNotExist:
+        return redirect('posts')
+
     context = {'post': post}
     return render(request, 'posts/edit.html', context)
 
+@login_required
 def update(request, post_id):
-    post = Post.objects.get(id=post_id)
-    post.author = request.POST.get('author')
+    try:
+        post = Post.objects.get(id=post_id, user=request.user)
+    except Post.DoesNotExist:
+        return redirect('posts')
     post.body = request.POST.get('body')
     post.save()
     
     return redirect('detail', post_id=post.id)
 
+@login_required
 def delete(request, post_id):
-    post = Post.objects.get(id=post_id)
+    try:
+        post = Post.objects.get(id=post_id, user=request.user)
+    except Post.DoesNotExist:
+        return redirect('posts')
+   
     post.delete()
     
     return redirect('posts')

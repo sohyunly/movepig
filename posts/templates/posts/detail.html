@@ -37,8 +37,10 @@
         {% endif %}
 
         <a href="{% url 'posts' %}">목록</a>
-        <a href="{% url 'edit' post.id %}">수정하기</a>
-        <a href="{% url 'delete' post.id %}">삭제하기</a>
+        {% if user == post.user %}
+          <a href="{% url 'edit' post.id %}">수정하기</a>
+          <a href="{% url 'delete' post.id %}">삭제하기</a>
+        {% endif %}
 
         <div class="row gy-4">
 
