@@ -22,7 +22,7 @@
                     {% for post in posts %}
                     <tr>
                         <td>{{ post.id }}</td>
-                        <td>{{ post.author }}</td>
+                        <td>{{ post.user.get_username }}</td>
                         <td>{{ post.body }}</td>
                         <td>{{ post.created_at }}</td>
                         <td><a href="{% url 'detail' post.id %}">보기</a></td>

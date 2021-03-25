@@ -24,7 +24,7 @@
         <h1>Post Detail</h1>
         {% if post %}
         <h2>작성자</h2>
-        <p>{{ post.author }}</p>
+        <p>{{ post.user.get_username }}</p>
 
         <h2>본문</h2>
         <p>{{ post.body }}</p>

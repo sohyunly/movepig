@@ -12,16 +12,23 @@ def posts(request):
     return render(request, 'posts/posts.html', context)
 
 def new(request):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+    
     return render(request, 'posts/new.html')
 
 def create(request):
-    author = request.POST.get('author')
+    if not request.user.is_authenticated:
+        return redirect('accounts/login')
+        
+
+    user = request.user
     body = request.POST.get('body')
 
-    post = Post(author=author, body=body, created_at=timezone.now())
+    post = Post(user=user, body=body, created_at=timezone.now())
     post.save()
-
     return redirect('detail', post_id=post.id)
+    
 
 # def create(request):
 #     print(request.GET) # request.GET이 서버 로그로 출력됨
