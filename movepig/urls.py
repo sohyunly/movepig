@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from posts import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,4 +39,4 @@ urlpatterns = [
     # path('signin/', include('accounts.urls')),
     path('mypage/', views.mypage, name='mypage'),
     # views 모듈 안에 있는 index라는 것을 사용하겠다!
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

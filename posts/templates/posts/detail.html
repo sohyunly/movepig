@@ -21,11 +21,18 @@
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
 
+        {% if post.image %}
+        <div class="mb-3 col-md-6">
+          <img class="img-fluid" src="{{ post.image.url }}" alt="Post Image">
+        </div>
+        {% endif %}
+
+
         <h1>Post Detail</h1>
         {% if post %}
         <h2>작성자</h2>
         <p>{{ post.user.get_username }}</p>
-
+        
         <h2>본문</h2>
         <p>{{ post.body }}</p>
 
@@ -36,6 +43,8 @@
           <p>No Post</p>
         {% endif %}
 
+        
+      
         <div class="mb-3 col-md-6">
           좋아요 수 : {{ post.liked_users.count }}
         </div>

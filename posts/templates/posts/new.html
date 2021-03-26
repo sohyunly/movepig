@@ -10,14 +10,19 @@
       <div class="container">
 
         <h1>커뮤니티 글쓰기!</h1>
-        <form method="POST" action="{% url 'create' %}">
+        <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
           {% csrf_token %}
            
 
         <div>
-            <label for="body">Body</label>
+            <label for="body">본문</label>
             <textarea id="body" cols="30" rows="10" name="body"></textarea>
         </div>
+        
+        <div class="mb-3 col-md-6">
+          <label class="form-label" for="image">이미지</label>
+          <input type="file" class="form-control" id="image" name="image">
+      </div>
         <input type="submit" value="작성하기">
         </form>
 </div>

@@ -20,8 +20,9 @@ def new(request):
 def create(request):
     user = request.user
     body = request.POST.get('body')
+    image = request.FILES.get('image')
 
-    post = Post(user=user, body=body, created_at=timezone.now())
+    post = Post(user=user, body=body, image=image, created_at=timezone.now())
     post.save()
     return redirect('detail', post_id=post.id)
     
@@ -58,6 +59,9 @@ def update(request, post_id):
     except Post.DoesNotExist:
         return redirect('posts')
     post.body = request.POST.get('body')
+    image = request.FILES.get('image')
+    if image:
+        post.image = image
     post.save()
     
     return redirect('detail', post_id=post.id)
