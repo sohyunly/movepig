@@ -7,6 +7,9 @@
         
         <div class="container">
             <img class="video-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
+
+           
+
              {% if videos %}
             <table>
                 <thead>
@@ -23,11 +26,12 @@
                     <tr>
                         <td>{{ video.id }}</td>
                         <td>{{ video.author }}</td>
-                        <td>{{ video.body }}</td>
+                        <td>{{ video.title }}</td>
                         <td>{{ video.created_at }}</td>
                         <td><a href="{% url 'videodetail' video.id %}">보기</a></td>
                     </tr>
                     {% endfor %}
+                    
                 </tbody>
             </table>
             {% else %}

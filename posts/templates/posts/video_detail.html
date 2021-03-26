@@ -8,13 +8,19 @@
         <div class="container">
             <img class="posts-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
          
+            <div class="row">
+              <div class="col-md-16">
+                  <div id="player"></div>
+              </div>
+          </div>
+          
             <h1>Post Detail</h1>
             {% if video %}
             <h2>작성자</h2>
             <p>{{ video.author }}</p>
     
             <h2>본문</h2>
-            <p>{{ video.body }}</p>
+            <p>{{ video.title }}</p>
     
             <h2>게시일</h2>
             <p>{{ video.created_at }}</p>
@@ -79,5 +85,20 @@
     </section><!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->
+  <script>
+    var tag = document.createElement('script');
 
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            videoId: '{{ video.video_key }}'
+        });
+    }
+</script>
   {% endblock %}
+
+  

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post, Video
+from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -107,11 +108,6 @@ def videodetail(request, video_id):
     }
     return render(request, 'posts/video_detail.html', context)
 
-def signin(request):
-    return render(request, 'posts/signin.html')
-
-def signup(request):
-    return render(request, 'posts/signup.html')
 
 def mypage(request):
     return render(request, 'posts/mypage.html')

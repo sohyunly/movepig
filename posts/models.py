@@ -20,8 +20,9 @@ class Post(models.Model):
 class Video(models.Model):
 
     author = models.CharField(max_length=100)
-    body = models.TextField()
+    title = models.TextField()
+    video_key = models.CharField(max_length=12, null=True)
     created_at = models.DateTimeField()
 
     def __str__(self):
-        return f'{self.author}: {self.body}'
+        return f'{self.author}: {self.title}'
