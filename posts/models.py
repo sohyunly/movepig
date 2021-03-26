@@ -21,6 +21,7 @@ class Video(models.Model):
 
     author = models.CharField(max_length=100)
     title = models.TextField()
+    video_image = models.ImageField(upload_to='videos', null=True)
     video_key = models.CharField(max_length=12, null=True)
     created_at = models.DateTimeField()
 
