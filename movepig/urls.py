@@ -28,6 +28,7 @@ urlpatterns = [
     path('posts/<int:post_id>/edit/', views.edit, name='edit'),
     path('posts/<int:post_id>/update/', views.update, name='update'),
     path('posts/<int:post_id>/delete/', views.delete, name='delete'),
+    path('posts/<int:post_id>/like/', views.like, name='like'),
     # path('detail/', views.detail, name='detail'),
     path('video/', views.video, name='video'),
     path('video/<int:video_id>/', views.videodetail, name='videodetail'),
