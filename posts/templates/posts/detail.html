@@ -37,7 +37,7 @@
         <p>{{ post.body }}</p>
 
         <h2>게시일</h2>
-        <p>{{ post.created_at }}</p>
+        <p>{{ post.created_at|date:'Y/m/d H:i }}</p>
 
         <h2>조회수</h2>
         <p>{{ post.update_counter }}</p>

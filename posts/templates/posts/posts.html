@@ -27,7 +27,7 @@
                         <td>{{ post.id }}</td>
                         <td>{{ post.user.get_username }}</td>
                         <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
-                        <td>{{ post.created_at }}</td></a>
+                        <td>{{ post.created_at|date:'Y/m/d H:i' }}</td></a>
                         <td>{{ post.n_hit }}</td>
 
                     </tr>

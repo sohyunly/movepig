@@ -133,3 +133,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # MEDIA_ROOT에 저장된 File이 제공될 base URL
 # 반드시 마지막이 / 로 끝나야 함
 MEDIA_URL = '/media/'
+

@@ -16,7 +16,7 @@
                 <div class="caption">
                   <h5>{{ video.title }}</h5>
                   <p>{{ video.author }}</p>
-                  <p>{{ video.created_at }}</p>
+                  <p>{{ video.created_at|date:'Y/m/d H:i' }}</p>
                   <p><a href="{% url 'videodetail' video.id %}" class="btn btn-primary" role="button">보기</a></p>
                 </div>
               </div>

@@ -23,7 +23,7 @@
             <p>{{ video.title }}</p>
     
             <h2>게시일</h2>
-            <p>{{ video.created_at }}</p>
+            <p>{{ video.created_at|date:'Y/m/d H:i }}</p>
     
             {% else %}
               <p>No Post</p>
