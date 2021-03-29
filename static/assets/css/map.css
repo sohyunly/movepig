@@ -38,3 +38,8 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+.btn-outline-dark:hover {
+    border-color: #F07F8F !important;
+    background-color: #F07F8F !important;
+}
+

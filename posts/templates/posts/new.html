@@ -2,22 +2,27 @@
 {% load static %}
 {% block content %}
 
-  <main id="main">
+<head><link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-viewer.min.js"></script></head>
+<main id="main">
+  <section class="main-box">
 
-
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-
-        <h1>커뮤니티 글쓰기!</h1>
+          <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
+        
         <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
           {% csrf_token %}
-           
+          <div class="mb-3">
+            <label for="title" class="form-label">글 제목</label>
+            <input type="title" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력해주세요!" name="title">
+          </div>
+  
 
-        <div>
-            <label for="body">본문</label>
-            <textarea id="body" cols="30" rows="10" name="body"></textarea>
+        <div class="mb-3">
+          <label for="body" class="form-label">내용</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="20" name="body"></textarea>
         </div>
+
         
         <div class="mb-3 col-md-6">
           <label class="form-label" for="image">이미지</label>
@@ -25,14 +30,11 @@
       </div>
         <input type="submit" value="작성하기">
         </form>
-</div>
+
         <a href="{% url 'posts' %}">목록</a>
-
        
-
-        </div>
-
       </div>
+
     </section><!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->

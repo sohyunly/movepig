@@ -8,14 +8,16 @@
         <div class="container">
             <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
             {% if posts %}
-            <table>
+
+            <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No.</th>
                         <th>작성자</th>
-                        <th>본문</th>
-                        <th>게시일</th>
-                        <th>상세</th>
+                        <th>제목</th>
+                        <th>날짜</th>
+                        <th>조회수</th>
+        
                     </tr>
                 </thead>
                 <tbody>
@@ -23,13 +25,14 @@
                     <tr>
                         <td>{{ post.id }}</td>
                         <td>{{ post.user.get_username }}</td>
-                        <td>{{ post.body }}</td>
-                        <td>{{ post.created_at }}</td>
-                        <td><a href="{% url 'detail' post.id %}">보기</a></td>
+                        <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
+                        <td>{{ post.created_at }}</td></a>
+                        <td>{{ post.post_hit }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
+
             {% else %}
             <p>NO POST</p>
             {% endif %}

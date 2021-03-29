@@ -36,6 +36,15 @@ h5 {
   font-weight: bold;
 }
 
+.row {
+  margin-top: 80px;
+}
+
+.table-hover {
+  margin-top: 80px;
+}
+
+
 /*--------------------------------------------------------------
 # Sections
 --------------------------------------------------------------*/
@@ -90,9 +99,6 @@ section {
 }
 
 
-.row {
-  margin-top: 100px;
-}
 
 
 /*--------------------------------------------------------------
@@ -247,7 +253,18 @@ section {
 }
 
 
+.getstarted {
+  background: #F07F8F;
+  padding: 8px 20px;
+  margin-left: 80px;
+  border-radius: 4px;
+  color: #fff;
+}
 
+.getstarted:hover {
+  color: #fff;
+  background: #E8344E;
+}
 
 /**
 * Mobile Navigation 
@@ -2284,4 +2301,8 @@ section {
   text-align: center;
   font-size: 13px;
   color: darkgrey;
+}
+
+th, td {
+  text-align: center;
 }

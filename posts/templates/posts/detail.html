@@ -39,6 +39,9 @@
         <h2>게시일</h2>
         <p>{{ post.created_at }}</p>
 
+        <h2>조회수</h2>
+        <p>{{ post.update_counter }}</p>
+
         {% else %}
           <p>No Post</p>
         {% endif %}

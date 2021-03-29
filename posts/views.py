@@ -20,10 +20,10 @@ def new(request):
 @login_required
 def create(request):
     user = request.user
+    title = request.POST.get('title')
     body = request.POST.get('body')
     image = request.FILES.get('image')
-
-    post = Post(user=user, body=body, image=image, created_at=timezone.now())
+    post = Post(user=user, title=title, body=body, image=image, created_at=timezone.now())
     post.save()
     return redirect('detail', post_id=post.id)
     

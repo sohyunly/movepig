@@ -6,9 +6,11 @@ from django.contrib.auth.models import User
 class Post(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    title = models.TextField(null=True)
     body = models.TextField()
     image = models.ImageField(upload_to='posts', null=True)
     created_at = models.DateTimeField()
+    n_hit = models.PositiveIntegerField(default=0, null=True)
     liked_users = models.ManyToManyField(User, related_name='liked_posts')
 
     def __str__(self):
@@ -16,6 +18,11 @@ class Post(models.Model):
             return f'{self.user.get_username()}: {self.body}'
         else:
             return f'{self.body}'
+
+    @property
+    def update_counter(self):
+        self.n_hit = self.n_hit + 1
+        self.save()
 
 class Video(models.Model):
 
