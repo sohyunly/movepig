@@ -2306,3 +2306,20 @@ section {
 th, td {
   text-align: center;
 }
+
+.write{
+  float:right;
+}
+
+
+
+.banner-term {
+  margin-top: 80px;
+}
+
+.post-title {
+  display: flex;
+  font-size: 16px;
+  padding-top: 8px;
+}
+

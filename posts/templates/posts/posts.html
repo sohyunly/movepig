@@ -18,19 +18,21 @@
                         <th>제목</th>
                         <th>날짜</th>
                         <th>조회수</th>
-        
+
+
                     </tr>
                 </thead>
                 <tbody>
                     {% for post in posts %}
-                    <tr>
+
+                    <tr style="cursor: pointer;" onclick="location.href='{{post.id}}/'">
                         <td>{{ post.id }}</td>
                         <td>{{ post.user.get_username }}</td>
-                        <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
-                        <td>{{ post.created_at|date:'Y/m/d H:i' }}</td></a>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.created_at|date:'Y/m/d H:i' }}</td>
                         <td>{{ post.n_hit }}</td>
-
                     </tr>
+
                     {% endfor %}
                 </tbody>
             </table>
@@ -39,8 +41,9 @@
             <p>NO POST</p>
             {% endif %}
 
-            <a href="{% url 'new' %}">글쓰기</a>
+            <a class="btn btn-outline-dark write" href="{% url 'new' %}">글쓰기</a>
         </div>
+
     </section>
 </main>
 {% endblock %}

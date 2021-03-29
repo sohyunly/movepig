@@ -1,121 +1,96 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{{ post.update_counter }}
 
-  <main id="main">
+<style>
+  .btn {
+    border: 1px solid darkgray;
+    margin-top: 20px;
+  }
+ 
+  .swiper-slide {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
+  .post-body, .mb-3 {
+      text-align: center;
+    }
 
-        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>Portfolio Details</li>
-        </ol>
-        <h2>Portfolio Details</h2>
+  .btn-group {
+    float: right;
+  }
 
-      </div>
-    </section><!-- End Breadcrumbs -->
+</style>
 
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-
-        {% if post.image %}
-        <div class="mb-3 col-md-6">
-          <img class="img-fluid" src="{{ post.image.url }}" alt="Post Image">
-        </div>
-        {% endif %}
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 
-        <h1>Post Detail</h1>
-        {% if post %}
-        <h2>작성자</h2>
-        <p>{{ post.user.get_username }}</p>
-        
-        <h2>본문</h2>
-        <p>{{ post.body }}</p>
 
-        <h2>게시일</h2>
-        <p>{{ post.created_at|date:'Y/m/d H:i }}</p>
+<main id="main">
+  <section class="main-box">
 
-        <h2>조회수</h2>
-        <p>{{ post.update_counter }}</p>
+    <div class="container">
+     
+      <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
 
-        {% else %}
-          <p>No Post</p>
-        {% endif %}
-
-        
-      
-        <div class="mb-3 col-md-6">
-          좋아요 수 : {{ post.liked_users.count }}
-        </div>
-        
-        {% if user.is_authenticated %}
-        <form class="mb-3" method="POST" action="{% url 'like' post.id %}">
-          {% csrf_token %}
-
-          {% if user in post.liked_users.all %}
-            <button type="submit" class="btn btn-primary">LIKE</button>
-          {% else %}
-            <button type="submit" class="btn btn-secondary">LIKE</button>
-          {% endif %}
-        </form>
+      {% if post %}
+      <h2 class="banner-term">{{ post.title }}</h2>
+      <div class="post-title">
+      <p>{{ post.user.get_username }} | {{ post.created_at|date:'Y/m/d H:i' }} | </p>
+      <p>조회수 {{ post.n_hit }}</p>
       {% endif %}
 
-        <a href="{% url 'posts' %}">목록</a>
-        {% if user == post.user %}
-          <a href="{% url 'edit' post.id %}">수정하기</a>
-          <a href="{% url 'delete' post.id %}">삭제하기</a>
-        {% endif %}
+     
+</div>
 
-        <div class="row gy-4">
+<hr>  
 
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper-container">
-              <div class="swiper-wrapper align-items-center">
 
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-2.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/portfolio-3.jpg" alt="">
-                </div>
-
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-              </ul>
-            </div>
-            <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
+      {% if post.image %}
+      <div class="swiper-slide">
+        <img src="{{ post.image.url }}" width="70%" height="70%" alt="Post Image">
       </div>
-    </section><!-- End Portfolio Details Section -->
+      {% endif %}
 
-  </main><!-- End #main -->
 
-  {% endblock %}
+<p class="post-body">{{ post.body }}</p>
+
+
+  <!-- 좋아요 start -->
+  {% if user.is_authenticated %}
+  <form class="mb-3" method="POST" action="{% url 'like' post.id %}">
+    {% csrf_token %}
+
+    {% if user in post.liked_users.all %}
+    <button type="submit" class="btn btn-outline-self"><i class="fas fa-heart"></i> {{ post.liked_users.count}} </button>
+    {% else %}
+    <button type="submit" class="btn btn-outline-self"><i class="far fa-heart"></i> {{ post.liked_users.count}} </button>
+    {% endif %}
+  </form>
+<!-- 좋아요 end -->
+
+{% else %}
+<p>No Post</p>
+{% endif %}
+
+<div class="btn-group" role="group" aria-label="btngroup">
+  <a class="btn btn-outline-dark" href="{% url 'posts' %}">목록</a>
+  {% if user == post.user %}
+  <a class="btn btn-outline-dark" href="{% url 'edit' post.id %}">수정하기</a>
+  <a class="btn btn-outline-dark" href="{% url 'delete' post.id %}">삭제하기</a>
+  {% endif %}
+</div>
+ 
+
+
+   
+
+    </div>
+  </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+
+{% endblock %}

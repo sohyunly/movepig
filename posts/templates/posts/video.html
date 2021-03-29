@@ -2,31 +2,31 @@
 {% load static %}
 {% block content %}
 <section class="main-box">
-    <div class="container">
-        <img class="video-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
-        {% if videos %}
-            
-        <div class="row">
-            {% for video in videos %}
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                {% if video.video_image %}
-                  <img class="img-fluid" src="{{ video.video_image.url }}" width="380px" alt="Video Image">
-                {% endif %}
-                <div class="caption">
-                  <h5>{{ video.title }}</h5>
-                  <p>{{ video.author }}</p>
-                  <p>{{ video.created_at|date:'Y/m/d H:i' }}</p>
-                  <p><a href="{% url 'videodetail' video.id %}" class="btn btn-primary" role="button">보기</a></p>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
+  <div class="container">
+    <img class="video-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
+    {% if videos %}
+
+    <div class="row">
+      {% for video in videos %}
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          {% if video.video_image %}
+          <img class="img-fluid" src="{{ video.video_image.url }}" width="380px" alt="Video Image">
+          {% endif %}
+          <div class="caption">
+            <h5>{{ video.title }}</h5>
+            <p>{{ video.author }}</p>
+            <p>{{ video.created_at|date:'Y/m/d H:i' }}</p>
+            <p><a href="{% url 'videodetail' video.id %}" class="btn btn-outline-dark" role="button">더 보기</a></p>
           </div>
-         
-            {% else %}
-            <p>NO POST</p>
-        {% endif %}
+        </div>
+      </div>
+      {% endfor %}
     </div>
+
+    {% else %}
+    <p>NO POST</p>
+    {% endif %}
+  </div>
 </section>
 {% endblock %}
