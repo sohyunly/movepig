@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 def posts(request):
     posts = Post.objects.all()
     context = {
-        'posts' :  posts
+        'posts' :  posts,
     }
     return render(request, 'posts/posts.html', context)
 

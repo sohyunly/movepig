@@ -10,7 +10,7 @@ class Post(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='posts', null=True)
     created_at = models.DateTimeField()
-    n_hit = models.PositiveIntegerField(default=0, null=True)
+    n_hit = models.PositiveIntegerField(default=0)
     liked_users = models.ManyToManyField(User, related_name='liked_posts')
 
     def __str__(self):
