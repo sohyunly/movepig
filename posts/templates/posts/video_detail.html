@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{{ video.v_update_counter }}
 
+<style>
+  #player {
+    width: 100%;
+    height: 500px;
+  }
+
+  h4 {
+    width: 80%;
+  }
+</style>
 <main id="main">
   <section class="main-box">
 
@@ -9,79 +20,51 @@
       <img class="posts-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
 
       <div class="row">
-        <div class="col-md-16">
-          <div id="player"></div>
-        </div>
+
       </div>
 
-      <h1>Post Detail</h1>
-      {% if video %}
-      <h2>작성자</h2>
-      <p>{{ video.author }}</p>
 
-      <h2>본문</h2>
-      <p>{{ video.title }}</p>
 
-      <h2>게시일</h2>
-      <p>{{ video.created_at|date:'Y/m/d H:i' }}</p>
-
-      {% else %}
-      <p>No Post</p>
-      {% endif %}
 
       <a href="{% url 'video' %}">목록</a>
 
     </div>
   </section>
 
-  <!-- ======= Portfolio Details Section ======= -->
   <section id="portfolio-details" class="portfolio-details">
     <div class="container">
 
       <div class="row gy-4">
 
         <div class="col-lg-8">
-          <div class="portfolio-details-slider swiper-container">
-            <div class="swiper-wrapper align-items-center">
-
-              <div class="swiper-slide">
-                <img src="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" alt="">
-              </div>
-
-              <div class="swiper-slide">
-                <img src="{% static 'assets/img/portfolio/portfolio-2.jpg' %}" alt="">
-              </div>
-
-              <div class="swiper-slide">
-                <img src="{% static 'assets/img/portfolio/portfolio-3.jpg' %}" alt="">
-              </div>
-
-            </div>
-            <div class="swiper-pagination"></div>
+          <div class="col-md-16">
+            <div id="player"></div>
           </div>
         </div>
 
         <div class="col-lg-4">
           <div class="portfolio-info">
-            <h3>Project information</h3>
+            {% if video %}
+            <h4>{{ video.title }}</h4>
+            <hr>
             <ul>
-              <li><strong>Category</strong>: Web design</li>
-              <li><strong>Client</strong>: ASU Company</li>
-              <li><strong>Project date</strong>: 01 March, 2020</li>
-              <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-            </ul>
-          </div>
-          <div class="portfolio-description">
-            <h2>This is an example of portfolio detail</h2>
-            <p>
-              Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia.
-              Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia
-              accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt
-              eius.
-            </p>
-          </div>
+              <li><strong>작성자</strong>: {{ video.author }}</li>
+              <li><strong>업로드</strong>: {{ video.created_at|date:'Y/m/d H:i' }}</li>
+              <li><strong>조회수</strong>: {{ video.v_hit }}</li>
+             
+             </ul>
+    
+         
+        </div>
+        <div class="portfolio-description">
+          <p>
+            {{ video.body }}
+          </p>
         </div>
 
+        {% else %}
+        <p>No Post</p>
+        {% endif %}
       </div>
 
     </div>

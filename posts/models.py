@@ -31,6 +31,10 @@ class Video(models.Model):
     video_image = models.ImageField(upload_to='videos', null=True)
     video_key = models.CharField(max_length=12, null=True)
     created_at = models.DateTimeField()
+    v_hit = models.PositiveIntegerField(default=0)
+    body = models.TextField(null=True)
+   
 
     def __str__(self):
         return f'{self.author}: {self.title}'
+    

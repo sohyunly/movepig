@@ -109,5 +109,6 @@ def videodetail(request, video_id):
     return render(request, 'posts/video_detail.html', context)
 
 
+
 def mypage(request):
     return render(request, 'posts/mypage.html')
