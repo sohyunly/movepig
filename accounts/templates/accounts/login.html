@@ -1,77 +1,76 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
 <style>
     h1 {
         margin-top: 80px;
         margin-bottom: 50px;
         text-align: center;
     }
-    .mb-3 {
-        text-align: center;
-    }
-   
-    .col-md-6 {
-        width:100%;
-    }
-    .form-input {
-    display: block;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    }
-    
-    .btn {
-        border-color:lightgray;
-    }
-    
 
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .form-input {
+        display: block;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .btn {
+        border-color: lightgray;
+    }
 </style>
 
 <main id="main">
     <section class="main-box">
-  
-      <div class="container">
-{% if error %}
-        <div class="alert alert-danger mt-3">
-            {{ error }}
+
+        <div class="container">
+            {% if error %}
+            <div class="alert alert-danger mt-3">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <h1>L O G I N</h1>
+            <div style="margin:auto; text-align: center;">
+                <form method="POST" action="{% url 'accounts:login' %}" style="display: inline-block;">
+                    {% csrf_token %}
+
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label" for="username">아이디</label>
+                        <input class="form-input" type="text" name="username" id="username" placeholder="아이디">
+                    </div>
+
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label" for="password">비밀번호</label>
+                        <input class="form-input" type="password" name="password" id="password" placeholder="비밀번호">
+                    </div>
+
+
+                    <div class="mb-3" style="margin-top: 30px;">
+                        <button type="submit" class="btn btn-outline-dark" style="width: 95px;">로그인</button>
+                        <a class="btn btn-outline-dark" href="{% url 'accounts:signup' %} "
+                            style="width: 95px;">회원가입</a></button>
+                    </div>
+
+                </form>
+            </div>
+            {% endblock %}
+
         </div>
-{% endif %}
-<h1>L O G I N</h1>
-<div id="form-center" style="margin:auto; text-align: center;">
-<form method="POST" action="{% url 'accounts:login' %}" style="display: inline-block;">
-    {% csrf_token %}
-
-    <div class="mb-3 col-md-6">
-        <label class="form-label" for="username">아이디</label>
-        <input class="form-input" type="text" name="username" id="username" placeholder="아이디">
-    </div>
-
-    <div class="mb-3 col-md-6">
-        <label class="form-label" for="password">비밀번호</label>
-        <input class="form-input" type="password" name="password" id="password" placeholder="비밀번호">
-    </div>
-
-    
-    <div class="mb-3" style="margin-top: 30px;">
-        <button type="submit" class="btn btn-outline-dark" style="width: 95px;">로그인</button>
-        <a class="btn btn-outline-dark" href="{% url 'accounts:signup' %} " style="width: 95px;">회원가입</a></button>
-    </div>
-  
-</form>
-</div>
-{% endblock %}
-
-      </div>
-      </section>
-      </main>
+    </section>
+</main>

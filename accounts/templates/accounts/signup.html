@@ -2,44 +2,60 @@
 {% load static %}
 {% block content %}
 
+<style>
+        h1 {
+        margin-top: 80px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .btn {
+        border-color: lightgray;
+    }
+</style>
+
 <main id="main">
+    <section class="main-box">
 
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-{% if error %}
-        <div class="alert alert-danger mt-3">
-            {{ error }}
+        <div class="container">
+            {% if error %}
+            <div class="alert alert-danger mt-3">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <h1>S I G N U P</h1>
+
+            <div style="margin:auto; text-align: center;">
+            <form method="POST" action="{% url 'accounts:signup' %}" style="display: inline-block;">
+                {% csrf_token %}
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="username">아이디</label>
+                    <input class="form-control" type="text" name="username" id="username" placeholder="아이디">
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="password">비밀번호</label>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="비밀번호">
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="password_check">비밀번호 확인</label>
+                    <input class="form-control" type="password_check" name="password_check" id="password_check"
+                        placeholder="비밀번호 확인">
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-outline-dark" style="width: 100%; margin-top: 10px;">회원가입</button>
+                </div>
+            </form>
         </div>
-{% endif %}
-
-
-<h3>회원가입!!</h3>
-
-<form method="POST" action="{% url 'accounts:signup' %}">
-    {% csrf_token %}
-
-    <div class="mb-3 col-md-6">
-        <label class="form-label" for="username">아이디</label>
-        <input class="form-control" type="text" name="username" id="username" placeholder="아이디">
-    </div>
-
-    <div class="mb-3 col-md-6">
-        <label class="form-label" for="password">비밀번호</label>
-        <input class="form-control" type="password" name="password" id="password" placeholder="비밀번호">
-    </div>
-
-    <div class="mb-3 col-md-6">
-        <label class="form-label" for="password_check">비밀번호 확인</label>
-        <input class="form-control" type="password_check" name="password_check" id="password_check" placeholder="비밀번호 확인">
-    </div>
-    
-    <div class="mb-3">
-        <button type="submit" class="btn btn-primary">회원가입</button>
-    </div>
-</form>
-
-{% endblock %}
-</div>
-</section>
+            {% endblock %}
+        </div>
+    </section>
 </main>
