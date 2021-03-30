@@ -9,10 +9,14 @@ from .forms import CommentForm
 
 def posts(request):
     posts = Post.objects.all()
-    context = {
-        'posts' :  posts,
-    }
-    return render(request, 'posts/posts.html', context)
+    # context = {
+    #     'posts' :  posts,
+    # }
+    search_key = request.GET.get('search_key')
+    if search_key :
+        posts = posts.filter(title__icontains=search_key)
+    return render(request, 'posts/posts.html', {'posts':posts})
+    
 
 @login_required
 def new(request):    
