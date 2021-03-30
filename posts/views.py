@@ -74,6 +74,7 @@ def update(request, post_id):
         post = Post.objects.get(id=post_id, user=request.user)
     except Post.DoesNotExist:
         return redirect('posts')
+    post.title = request.POST.get('title')
     post.body = request.POST.get('body')
     image = request.FILES.get('image')
     if image:

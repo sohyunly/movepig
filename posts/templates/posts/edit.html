@@ -2,21 +2,40 @@
 {% load static %}
 {% block content %}
 
-  <main id="main">
+<style>
+  h1 {
+    margin-top: 80px;
+  }
 
+  .btn-group {
+    text-align: center;
+  }
+  .btn {
+    border-color : lightgray;
+    margin-left: 620px;
+    margin-top: 20px;
+  }
+  img {
+    margin-bottom : 60px;
+  }
 
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
+</style>
+<main id="main">
+  <section class="main-box">
+    <div class="container">
+    
+      <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
 
-        <h1>커뮤니티 수정!</h1>
         <form method="POST" action="{% url 'update' post.id %}" enctype="multipart/form-data">
           {% csrf_token %}
-            
-          
-        <div>
-            <label for="body">본문</label>
-            <textarea id="body" cols="30" rows="10" name="body">{{ post.body }}</textarea>
+          <div class="mb-3">
+            <label for="title" class="form-label">글 제목</label>
+            <input type="title" class="form-control" id="title" name="title" value="{{ post.title }}">
+          </div>
+  
+        <div class="mb-3">
+            <label for="body" class="form-label">내용</label>
+            <textarea id="body" cols="30" rows="10" name="body" class="form-control">{{ post.body }}</textarea>
         </div>
 
         {% if post.image %}
@@ -29,11 +48,13 @@
             <label class="form-label" for="image">이미지</label>
             <input type="file" class="form-control" id="image" name="image">
         </div>
-
-        <input type="submit" value="수정하기">
+        <div class="btn-group">
+        <input class="btn btn-outline-dark" type="submit" value="수정하기">
+        <a class="btn btn-outline-dark" href="{% url 'posts' %}">목록</a>
         </form>
+        </div>
 </div>
-        <a href="{% url 'posts' %}">목록</a>
+       
 
        
 

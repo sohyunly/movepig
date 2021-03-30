@@ -2,8 +2,21 @@
 {% load static %}
 {% block content %}
 
-<head><link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
-  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-viewer.min.js"></script></head>
+<style>
+  .btn-group {
+    text-align: center;
+  }
+  .btn {
+    border-color : lightgray;
+    margin-left: 620px;
+    margin-top: 20px;
+  }
+
+  img {
+    margin-bottom : 60px;
+  }
+</style>
+
 <main id="main">
   <section class="main-box">
 
@@ -28,10 +41,13 @@
           <label class="form-label" for="image">이미지</label>
           <input type="file" class="form-control" id="image" name="image">
       </div>
-        <input type="submit" value="작성하기">
-        </form>
+      <div class="btn-group">
+        <input type="submit" class="btn btn-outline-dark" value="작성하기">
+        <a class="btn btn-outline-dark" href="{% url 'posts' %}">목록</a>
+      </div>
+      </form>
 
-        <a href="{% url 'posts' %}">목록</a>
+        
        
       </div>
 
