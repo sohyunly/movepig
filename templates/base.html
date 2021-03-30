@@ -59,7 +59,7 @@
           <li><a href="{% url 'video' %}">운동 영상</a></li>
           <li><a href="{% url 'posts' %}">커뮤니티</a></li>
           <li><a href="{% url 'map'  %}">헬스장 찾기</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Contact</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#portfolio">Contact</a></li> -->
 
           {% if user.is_authenticated %}
           <li><form method="POST" action="{% url 'accounts:logout' %}">
