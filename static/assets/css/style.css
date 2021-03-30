@@ -28,7 +28,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Nunito", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
 }
 
 h5 {
@@ -221,7 +221,7 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 80px;
-  font-family: "Nunito", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
   font-size: 20px;
   font-weight: 700;
   color: #444444;
@@ -382,7 +382,7 @@ section {
 
 
 .hero .btn-get-started span {
-  font-family: "Nunito", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -481,7 +481,7 @@ section {
 }
 
 .about .btn-read-more span {
-  font-family: "Nunito", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -562,7 +562,7 @@ section {
 .counts .count-box p {
   padding: 0;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
   font-size: 14px;
 }
 
@@ -873,7 +873,7 @@ section {
   font-size: 36px;
   color: #444444;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
 }
 
 .pricing .price sup {
@@ -919,7 +919,7 @@ section {
   transition: none;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Nunito", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
   font-weight: 600;
   transition: 0.3s;
   border: 1px solid #4154f1;
@@ -2214,7 +2214,7 @@ section {
   font-weight: 700;
   letter-spacing: 1px;
   color: #F07F8F;
-  font-family: "Nunito", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
   margin-top: 3px;
 }
 
@@ -2223,7 +2223,7 @@ section {
   line-height: 24px;
   margin-bottom: 0;
   margin-right: 60px;
-  font-family: "Nunito", sans-serif;
+  font-family: 'NanumSquare', sans-serif !important;
 }
 
 .footer .footer-top .social-links a {
