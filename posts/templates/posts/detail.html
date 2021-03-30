@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
-{{ post.update_counter }}
 {% load static %}
 {% block content %}
 
-
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style>
   .btn {
     border: 1px solid darkgray;
@@ -41,17 +40,21 @@
     font-weight: 400;
     width: 700px;
   }
-
+.hidden {
+  color:white;
+}
 </style>
+<div class="hidden">{{ post.update_counter }} </div>
 
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+
 
 
 
 <main id="main">
   <section class="main-box">
 
-    <div class="container">
+  <div class="container">
      
       <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
 
