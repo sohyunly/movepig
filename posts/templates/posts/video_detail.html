@@ -9,25 +9,27 @@
     height: 500px;
   }
 
+  .row {
+    margin-top: 30px;
+  }
+
   h4 {
     width: 80%;
   }
+  .btn {
+    float: right;
+    border-color: lightgray;
+  }
+  ul {
+    margin-top: 30px;
+  }
 </style>
+
 <main id="main">
   <section class="main-box">
 
     <div class="container">
       <img class="posts-banner" src="{% static 'assets/img/video-banner.png' %}" class="img-fluid" alt="">
-
-      <div class="row">
-
-      </div>
-
-
-
-
-      <a href="{% url 'video' %}">목록</a>
-
     </div>
   </section>
 
@@ -51,7 +53,6 @@
               <li><strong>작성자</strong>: {{ video.author }}</li>
               <li><strong>업로드</strong>: {{ video.created_at|date:'Y/m/d H:i' }}</li>
               <li><strong>조회수</strong>: {{ video.v_hit }}</li>
-             
              </ul>
     
          
@@ -60,6 +61,7 @@
           <p>
             {{ video.body }}
           </p>
+          <a href="{% url 'video' %}" class="btn btn-outline-dark" role="button">목록</a>
         </div>
 
         {% else %}
