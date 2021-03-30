@@ -12,6 +12,7 @@ class Post(models.Model):
     created_at = models.DateTimeField()
     n_hit = models.PositiveIntegerField(default=0)
     liked_users = models.ManyToManyField(User, related_name='liked_posts')
+    # hashtags = models.ManyToManyField('Hashtag', blank=True)
 
     def __str__(self):
         if self.user:
@@ -43,3 +44,16 @@ class Video(models.Model):
     def vupdate_counter(self):
         self.v_hit = self.v_hit + 1
         self.save()
+
+# class Hashtag(models.Model):
+#     name = models.CharField(max_length=50)
+
+#     def __str__(self):
+#         return self.name
+
+class Comment(models.Model):
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    comment_text = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        return self.comment_text

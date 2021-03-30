@@ -4,6 +4,7 @@ from .models import Post, Video
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from .forms import CommentForm
 
 
 def posts(request):
@@ -41,7 +42,17 @@ def detail(request, post_id):
     context = {
         'post' :  post
     }
-    return render(request, 'posts/detail.html', context)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post_id = post
+            comment.comment_text = form.cleaned_data["comment_text"]
+            comment.save()
+            return redirect("detail", post_id)
+    else:
+        form = CommentForm()
+        return render(request, 'posts/detail.html', {"post":post, "form":form})
 
 @login_required
 def edit(request, post_id):
@@ -93,6 +104,8 @@ def like(request, post_id):
         except Post.DoesNotExist:
             pass
     return redirect('posts')
+
+
 
 def video(request):
     videos = Video.objects.all()

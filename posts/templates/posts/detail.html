@@ -22,6 +22,10 @@
   .btn-group {
     float: right;
   }
+  
+  .comment {
+    margin-top: 100px;
+  }
 
 </style>
 
@@ -84,8 +88,21 @@
   {% endif %}
 </div>
  
+<hr>
 
-
+{% for comment in post.comments.all %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"> {{post.user.get_username}} {{ comment.comment_text }}</h1>
+  </div>
+</div>
+{% endfor %}
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input class="btn btn-primary" type="submit" value="submit">
+</form>
+</div>
    
 
     </div>
