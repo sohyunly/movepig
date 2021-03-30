@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{{ video.v_update_counter }}
-
+{{ video.vupdate_counter }}
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <style>
   #player {
     width: 100%;
@@ -20,6 +20,13 @@
     float: right;
     border-color: lightgray;
   }
+
+  .btn-outline-self {
+    border-color: lightgray;
+    text-align: center;
+    margin-right: 650px;
+  }
+
   ul {
     margin-top: 30px;
   }
@@ -61,14 +68,29 @@
           <p>
             {{ video.body }}
           </p>
+            
+
           <a href="{% url 'video' %}" class="btn btn-outline-dark" role="button">목록</a>
         </div>
+        
 
         {% else %}
         <p>No Post</p>
         {% endif %}
       </div>
+  <!-- 좋아요 start -->
+  {% if user.is_authenticated %}
+  <form class="mb-3" method="POST" action="{% url 'vlike' video.id %}">
+    {% csrf_token %}
 
+    {% if user in video.vliked_users.all %}
+    <button type="submit" class="btn btn-outline-self"><i class="fas fa-heart"></i> {{ video.vliked_users.count}} </button>
+    {% else %}
+    <button type="submit" class="btn btn-outline-self"><i class="far fa-heart"></i> {{ video.vliked_users.count}} </button>
+    {% endif %}
+  </form>
+  {% endif %}
+<!-- 좋아요 end -->
     </div>
   </section><!-- End Portfolio Details Section -->
 

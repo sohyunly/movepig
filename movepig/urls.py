@@ -34,6 +34,7 @@ urlpatterns = [
     # path('detail/', views.detail, name='detail'),
     path('video/', views.video, name='video'),
     path('video/<int:video_id>/', views.videodetail, name='videodetail'),
+    path('video/<int:video_id>/vlike/', views.vlike, name='vlike'),
     # path('videodetail/', views.videodetail, name='videodetail'),
     path('accounts/', include('accounts.urls')),
     # path('signin/', include('accounts.urls')),

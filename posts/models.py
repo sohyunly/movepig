@@ -33,8 +33,13 @@ class Video(models.Model):
     created_at = models.DateTimeField()
     v_hit = models.PositiveIntegerField(default=0)
     body = models.TextField(null=True)
+    vliked_users = models.ManyToManyField(User, related_name='vliked_posts')
    
 
     def __str__(self):
         return f'{self.author}: {self.title}'
     
+    @property
+    def vupdate_counter(self):
+        self.v_hit = self.v_hit + 1
+        self.save()

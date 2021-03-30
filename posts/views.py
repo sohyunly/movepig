@@ -108,7 +108,21 @@ def videodetail(request, video_id):
     }
     return render(request, 'posts/video_detail.html', context)
 
+@login_required
+def vlike(request, video_id):
+    if request.method == 'POST':
+        try:
+            video = Video.objects.get(id=video_id)
 
+            if request.user in video.vliked_users.all():
+                video.vliked_users.remove(request.user)
+            else:
+                video.vliked_users.add(request.user)
+            
+            return redirect('videodetail', video_id=video.id)
+        except Post.DoesNotExist:
+            pass
+    return redirect('video')
 
 def mypage(request):
     return render(request, 'posts/mypage.html')
