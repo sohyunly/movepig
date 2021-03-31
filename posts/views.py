@@ -8,7 +8,7 @@ from .forms import CommentForm
 
 
 def posts(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created_at')
     # context = {
     #     'posts' :  posts,
     # }
@@ -113,7 +113,7 @@ def like(request, post_id):
 
 
 def video(request):
-    videos = Video.objects.all()
+    videos = Video.objects.all().order_by('-created_at')
     context = {
         'videos' :  videos
     }
