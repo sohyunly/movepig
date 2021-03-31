@@ -5,6 +5,8 @@
 - Information Architecture : https://www.icloud.com/keynote/0tYJxk06k64QclExteAMFYWAQ#Move_Pig_IA
 - bootstrapmade : https://bootstrapmade.com/flexstart-bootstrap-startup-template/
 
+🐽 2021/03/11 ~ 2021/03/31 | version 1 완성
+
 <hr>
 
-*Updated 2021-03-11
+*Updated 2021-03-31
