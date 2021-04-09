@@ -79,10 +79,15 @@ WSGI_APPLICATION = 'movepig.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'movepig',
+        'USER': 'celine',
+        'PASSWORD': 'likelion123',
+        'HOST': 'movepig.c06tmjzh9kbw.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
