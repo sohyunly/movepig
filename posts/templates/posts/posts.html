@@ -9,14 +9,29 @@
     }
 
     .search {
-        float: right;
-        width: 850px;
+        margin: 0 auto;
+        width: 50%;
         margin-bottom: 40px;
     }
 
     .row {
         margin-top: 70px;
     }  
+
+    @media screen and (max-width: 768px) {
+   .posts-banner {
+     width : 100%;
+     height: 100%;
+   }
+   .search {
+       margin: 0 auto;
+       margin-bottom: 40px;
+       width: 100%;
+   }
+
+
+}
+
 </style>
 
 {{ post.update_counter }}
@@ -29,14 +44,15 @@
         <div class="search">
             <form action="" method='GET'>
                 <div class="row" style="margin-bottom:15px;">
-                    <div class="col-lg-5">
-                        <div class="input-group">
+                   
+                        <div class="input-group flex-nowrap">
                             <input type="text" class="form-control" name="search_key" value="{{ search_key }}"
                                 placeholder="제목을 입력해주세요!">
                             <span class="input-group-btn">
                                 <input class="btn btn-outline-dark" type="submit" value="찾기">
                             </span>
-                        </div><!-- /input-group -->
+
+                   
                     </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
             </form>

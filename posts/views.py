@@ -9,9 +9,6 @@ from .forms import CommentForm
 
 def posts(request):
     posts = Post.objects.all().order_by('-created_at')
-    # context = {
-    #     'posts' :  posts,
-    # }
     search_key = request.GET.get('search_key')
     if search_key :
         posts = posts.filter(title__icontains=search_key)

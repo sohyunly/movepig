@@ -45,6 +45,12 @@
   .hidden {
     color: white;
   }
+  @media screen and (max-width: 768px) {
+   .posts-banner {
+     width : 100%;
+     height: 100%;
+   }
+  }
 </style>
 <div class="hidden">{{ post.update_counter }} </div>
 
@@ -72,7 +78,7 @@
 
       {% if post.image %}
       <div class="swiper-slide">
-        <img src="{{ post.image.url }}" width="70%" height="70%" alt="Post Image">
+        <img src="{{ post.image.url }}" width="400px" height="400px" alt="Post Image">
       </div>
       {% endif %}
       <p class="post-body">{{ post.body }}</p>
@@ -103,13 +109,17 @@
 
 
       <div class="jumbotron jumbotron-fluid">
-        <p><b>{{post.user.get_username}}님</b> | {{ comment.comment_text }}</p>
+        <p><b>{{user.get_username}}님</b> | {{ comment.comment_text }}</p>
       </div>
       {% endfor %}
       <form method="post">
         {% csrf_token %}
         {{ form }}
-        <input class="btn btn-outline-dark" type="submit" value="댓글등록">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-btn">
+              <input class="btn btn-outline-dark" type="submit" value="댓글등록">
+          </span>
+        </div>
       </form>
     </div>
 
