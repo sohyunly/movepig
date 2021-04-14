@@ -8,16 +8,17 @@
     border: 1px solid darkgray;
     margin-top: 20px;
   }
- 
+
   .swiper-slide {
     margin-top: 50px;
     margin-bottom: 30px;
     text-align: center;
   }
 
-  .post-body, .mb-3 {
-      text-align: center;
-    }
+  .post-body,
+  .mb-3 {
+    text-align: center;
+  }
 
   .btn-group {
     float: right;
@@ -26,12 +27,12 @@
   .comment {
     margin-top: 100px;
   }
-  
+
   label {
     display: none;
   }
 
-  #id_comment_text{
+  #id_comment_text {
     border: 1px solid darkgray;
     margin-top: 20px;
     vertical-align: middle;
@@ -40,90 +41,80 @@
     font-weight: 400;
     width: 700px;
   }
-.hidden {
-  color:white;
-}
+
+  .hidden {
+    color: white;
+  }
 </style>
 <div class="hidden">{{ post.update_counter }} </div>
-
-
-
-
-
 
 <main id="main">
   <section class="main-box">
 
-  <div class="container">
-     
+    <div class="container">
+
       <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
 
       {% if post %}
       <h2 class="banner-term">{{ post.title }}</h2>
       <div class="post-title">
-      <p>{{ post.user.get_username }} | {{ post.created_at|date:'Y/m/d H:i' }} | </p>
-      <p> 조회수 {{ post.n_hit }}</p>
-    </div>
-
-        {% endif %}
-        <div class="btn-group" role="group" aria-label="btngroup" style="margin-top: -60px;">
-          <a class="btn btn-outline-dark" href="{% url 'posts' %}">목록</a>
-          {% if user == post.user %}
-          <a class="btn btn-outline-dark" href="{% url 'edit' post.id %}">수정하기</a>
-          <a class="btn btn-outline-dark" href="{% url 'delete' post.id %}">삭제하기</a>
-        </div>
+        <p>{{ post.user.get_username }} | {{ post.created_at|date:'Y/m/d H:i' }} | </p>
+        <p> 조회수 {{ post.n_hit }}</p>
+      </div>
+      {% endif %}
+      
+      <div class="btn-group" role="group" aria-label="btngroup" style="margin-top: -60px;">
+        <a class="btn btn-outline-dark" href="{% url 'posts' %}">목록</a>
+        {% if user == post.user %}
+        <a class="btn btn-outline-dark" href="{% url 'edit' post.id %}">수정하기</a>
+        <a class="btn btn-outline-dark" href="{% url 'delete' post.id %}">삭제하기</a>
+      </div>
       {% endif %}
 
-     
-
-
-<hr>  
-
-
+      <hr>
       {% if post.image %}
       <div class="swiper-slide">
         <img src="{{ post.image.url }}" width="70%" height="70%" alt="Post Image">
       </div>
       {% endif %}
+      <p class="post-body">{{ post.body }}</p>
+
+      <!-- 좋아요 start -->
+      {% if user.is_authenticated %}
+      <form class="mb-3" method="POST" action="{% url 'like' post.id %}">
+        {% csrf_token %}
+
+        {% if user in post.liked_users.all %}
+        <button type="submit" class="btn btn-outline-self"><i class="fas fa-heart"></i> {{ post.liked_users.count}}
+        </button>
+        {% else %}
+        <button type="submit" class="btn btn-outline-self"><i class="far fa-heart"></i> {{ post.liked_users.count}}
+        </button>
+        {% endif %}
+      </form>
+      <!-- 좋아요 end -->
+
+      {% else %}
+      <p>No Post</p>
+      {% endif %}
 
 
-<p class="post-body">{{ post.body }}</p>
+      <hr>
+
+      {% for comment in post.comments.all %}
 
 
-  <!-- 좋아요 start -->
-  {% if user.is_authenticated %}
-  <form class="mb-3" method="POST" action="{% url 'like' post.id %}">
-    {% csrf_token %}
+      <div class="jumbotron jumbotron-fluid">
+        <p><b>{{post.user.get_username}}님</b> | {{ comment.comment_text }}</p>
+      </div>
+      {% endfor %}
+      <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input class="btn btn-outline-dark" type="submit" value="댓글등록">
+      </form>
+    </div>
 
-    {% if user in post.liked_users.all %}
-    <button type="submit" class="btn btn-outline-self"><i class="fas fa-heart"></i> {{ post.liked_users.count}} </button>
-    {% else %}
-    <button type="submit" class="btn btn-outline-self"><i class="far fa-heart"></i> {{ post.liked_users.count}} </button>
-    {% endif %}
-  </form>
-<!-- 좋아요 end -->
-
-{% else %}
-<p>No Post</p>
-{% endif %}
-
- 
-<hr>
-
-{% for comment in post.comments.all %}
-
-
-<div class="jumbotron jumbotron-fluid">
-    <p><b>{{post.user.get_username}}님</b> | {{ comment.comment_text }}</p>
-</div>
-{% endfor %}
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <input class="btn btn-outline-dark" type="submit" value="댓글등록">
-</form>
-</div>
-   
 
     </div>
   </section><!-- End Portfolio Details Section -->
