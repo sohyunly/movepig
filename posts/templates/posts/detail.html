@@ -50,9 +50,7 @@
 
 <main id="main">
   <section class="main-box">
-
     <div class="container">
-
       <img class="posts-banner" src="{% static 'assets/img/posts-banner.png' %}" class="img-fluid" alt="">
 
       {% if post %}
@@ -68,10 +66,10 @@
         {% if user == post.user %}
         <a class="btn btn-outline-dark" href="{% url 'edit' post.id %}">수정하기</a>
         <a class="btn btn-outline-dark" href="{% url 'delete' post.id %}">삭제하기</a>
-      </div>
-      {% endif %}
-
       <hr>
+      {% endif %}
+    </div>
+
       {% if post.image %}
       <div class="swiper-slide">
         <img src="{{ post.image.url }}" width="70%" height="70%" alt="Post Image">
